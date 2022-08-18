@@ -1,4 +1,6 @@
-package com.peanut.design.pattern.factory;
+package com.peanut.design.pattern.factory.store;
+
+import com.peanut.design.pattern.factory.product.Pizza;
 
 public abstract class PizzaStore {
 

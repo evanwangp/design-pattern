@@ -25,51 +25,53 @@
 '}
 
 
+package "com.penaut.design.pattern.factory.product" {
+    abstract class Pizza {
+        {abstract} void prepare();
+        {abstract} void make();
+        {abstract} void pack();
+    }
 
-abstract class Pizza {
-    abstract void prepare();
-    abstract void make();
-    abstract void pack();
+    note left of Pizza : 产品主体
+
+    class BJPizza extends Pizza
+    class SYPizza extends Pizza
+    class NYPizza extends Pizza
+    class BSDPizza extends Pizza
+
 }
 
-note left of Pizza : 产品主体
+package "com.penaut.design.pattern.factory.store" {
+    note left of PizzaStore : 工厂代理执行
+    abstract class PizzaStore {
+        + void : orderPizza(String item);
+        {abstract} Pizza createPizza(String item);
+    }
 
-class BJPizza extends Pizza
-class SYPizza extends Pizza
-class NYPizza extends Pizza
-class BSDPizza extends Pizza
+    class ChinaPizzaStore extends PizzaStore {
+        bjPizza : BJPizza
+        syPizza : SYPizza
+        Pizza createPizza(String item);
+    }
 
-
-note left of PizzaStore : 工厂代理执行
-abstract class PizzaStore {
-    public void orderPizza(String item);
-    abstract Pizza createPizza(String item);
+    class AmericanPizzaStore extends PizzaStore {
+        nyPizza : NYPizza
+        bsdPizza : BSDPizza
+        Pizza createPizza(String item);
+    }
+}
+package "com.penaut.design.pattern.factory" {
+    class TestFactoryPattern() {
+        main(String args[]);
+        String generateItem();
+    }
 }
 
-class ChinaPizzaStore extends PizzaStore {
-    bjPizza : BJPizza
-    syPizza : SYPizza
-    Pizza createPizza(String item);
-}
-
-class AmericanPizzaStore extends PizzaStore {
-    nyPizza : NYPizza
-    bsdPizza : BSDPizza
-    Pizza createPizza(String item);
-}
-
-class TestFactoryPattern() {
-    main(String args[]);
-    String generateItem();
-}
-
-ChinaPizzaStore *-- BJPizza
-ChinaPizzaStore *-- SYPizza
-
+ChinaPizzaStore o-- BJPizza
+ChinaPizzaStore o-- SYPizza
 
 AmericanPizzaStore *-- NYPizza
 AmericanPizzaStore *-- BSDPizza
-
 
 
 

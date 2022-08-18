@@ -1,5 +1,9 @@
 package com.peanut.design.pattern.factory;
 
+import com.peanut.design.pattern.factory.store.AmericanPizzaStore;
+import com.peanut.design.pattern.factory.store.ChinaPizzaStore;
+import com.peanut.design.pattern.factory.store.PizzaStore;
+
 import java.util.Scanner;
 
 public class TestFactoryPattern {

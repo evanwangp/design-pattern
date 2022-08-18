@@ -1,4 +1,8 @@
-package com.peanut.design.pattern.factory;
+package com.peanut.design.pattern.factory.store;
+
+import com.peanut.design.pattern.factory.product.BJPizza;
+import com.peanut.design.pattern.factory.product.Pizza;
+import com.peanut.design.pattern.factory.product.SYPizza;
 
 public class ChinaPizzaStore extends PizzaStore {
     @Override

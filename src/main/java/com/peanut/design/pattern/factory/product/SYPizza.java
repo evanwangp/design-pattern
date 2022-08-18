@@ -1,21 +1,21 @@
-package com.peanut.design.pattern.factory;
+package com.peanut.design.pattern.factory.product;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class SYPizza extends Pizza {
     @Override
-    void prepare() {
+    public void prepare() {
         log.info("Prepare SYPizza");
     }
 
     @Override
-    void make() {
+    public void make() {
         log.info("make SYPizza");
     }
 
     @Override
-    void pack() {
+    public void pack() {
         log.info("make SYPizza");
     }
 }
