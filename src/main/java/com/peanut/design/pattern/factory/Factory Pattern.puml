@@ -1,0 +1,76 @@
+@startuml
+''https://plantuml.com/class-diagram
+'
+'abstract class AbstractList
+'abstract AbstractCollection
+'interface List
+'interface Collection
+'
+'List <|-- AbstractList
+'Collection <|-- AbstractCollection
+'
+'Collection <|- List
+'AbstractCollection <|- AbstractList
+'AbstractList <|-- ArrayList
+'
+'class ArrayList {
+'Object[] elementData
+'size()
+'}
+'
+'enum TimeUnit {
+'DAYS
+'HOURS
+'MINUTES
+'}
+
+
+
+abstract class Pizza {
+    abstract void prepare();
+    abstract void make();
+    abstract void pack();
+}
+
+note left of Pizza : 产品主体
+
+class BJPizza extends Pizza
+class SYPizza extends Pizza
+class NYPizza extends Pizza
+class BSDPizza extends Pizza
+
+
+note left of PizzaStore : 工厂代理执行
+abstract class PizzaStore {
+    public void orderPizza(String item);
+    abstract Pizza createPizza(String item);
+}
+
+class ChinaPizzaStore extends PizzaStore {
+    bjPizza : BJPizza
+    syPizza : SYPizza
+    Pizza createPizza(String item);
+}
+
+class AmericanPizzaStore extends PizzaStore {
+    nyPizza : NYPizza
+    bsdPizza : BSDPizza
+    Pizza createPizza(String item);
+}
+
+class TestFactoryPattern() {
+    main(String args[]);
+    String generateItem();
+}
+
+ChinaPizzaStore *-- BJPizza
+ChinaPizzaStore *-- SYPizza
+
+
+AmericanPizzaStore *-- NYPizza
+AmericanPizzaStore *-- BSDPizza
+
+
+
+
+@enduml
